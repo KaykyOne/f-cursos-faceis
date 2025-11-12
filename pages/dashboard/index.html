@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Aluno</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .user-details h2 {
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .user-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .icon-blue {
+            background: #e3f2fd;
+            color: #2196f3;
+        }
+
+        .icon-green {
+            background: #e8f5e9;
+            color: #4caf50;
+        }
+
+        .icon-orange {
+            background: #fff3e0;
+            color: #ff9800;
+        }
+
+        .icon-purple {
+            background: #f3e5f5;
+            color: #9c27b0;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .course-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background: #f9f9f9;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .course-item:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+
+        .course-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .course-info {
+            flex: 1;
+        }
+
+        .course-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .course-progress {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            background: #f9f9f9;
+        }
+
+        .achievement-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        .badge-gold {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+        }
+
+        .badge-silver {
+            background: linear-gradient(135deg, #c0c0c0 0%, #e8e8e8 100%);
+        }
+
+        .badge-bronze {
+            background: linear-gradient(135deg, #cd7f32 0%, #e9a76c 100%);
+        }
+
+        .achievement-info h4 {
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .achievement-info p {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            color: #667eea;
+        }
+
+        .activity-details {
+            flex: 1;
+        }
+
+        .activity-title {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .activity-time {
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 968px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .quick-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 1,
+                'wght' 500,
+                'GRAD' 0,
+                'opsz' 24;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header com informações do usuário -->
+        <div class="header">
+            <div class="user-info">
+                <div class="avatar">A</div>
+                <div class="user-details">
+                    <h2>Bem-vindo de volta, Aluno!</h2>
+                    <p>Continue seu aprendizado de onde parou</p>
+                </div>
+            </div>
+            <div class="quick-actions">
+                <button class="btn btn-primary" onclick="parent.carregar('./pages/cursos/index.html')">
+                    <span class="material-symbols-outlined">school</span>
+                    Meus Cursos
+                </button>
+                <a class="btn btn-secondary" href="../../">
+                    <span class="material-symbols-outlined">home</span>
+                    Início
+                </a>
+            </div>
+        </div>
+
+        <!-- Cards de Estatísticas -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Cursos Ativos</div>
+                    </div>
+                    <div class="stat-icon icon-blue">
+                        <span class="material-symbols-outlined">school</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">67%</div>
+                        <div class="stat-label">Progresso Médio</div>
+                    </div>
+                    <div class="stat-icon icon-green">
+                        <span class="material-symbols-outlined">trending_up</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">24</div>
+                        <div class="stat-label">Horas de Estudo</div>
+                    </div>
+                    <div class="stat-icon icon-orange">
+                        <span class="material-symbols-outlined">schedule</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Certificados</div>
+                    </div>
+                    <div class="stat-icon icon-purple">
+                        <span class="material-symbols-outlined">workspace_premium</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid de Conteúdo Principal -->
+        <div class="content-grid">
+            <!-- Cursos em Andamento -->
+            <div class="card">
+                <h3 class="card-title">
+                    <span class="material-symbols-outlined">play_circle</span>
+                    Cursos em Andamento
+                </h3>
+
+                <div class="course-item" onclick="parent.carregar('./pages/curso-python/index.html')">
+                    <div class="course-icon">
+                        <span class="material-symbols-outlined">code</span>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-name">Python Básico ao Avançado</div>
+                        <div class="course-progress">15 de 20 aulas concluídas</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-item" onclick="parent.carregar('./pages/curso-react/index.html')">
+                    <div class="course-icon">
+                        <span class="material-symbols-outlined">code</span>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-name">React - Do Básico ao Avançado</div>
+                        <div class="course-progress">8 de 18 aulas concluídas</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 44%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-item" onclick="parent.carregar('./pages/curso-java/index.html')">
+                    <div class="course-icon">
+                        <span class="material-symbols-outlined">code</span>
+                    </div>
+                    <div class="course-info">
+                        <div class="course-name">Java Completo</div>
+                        <div class="course-progress">22 de 25 aulas concluídas</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 1.5rem;">
+                    <button class="btn btn-primary" onclick="parent.carregar('./pages/cursos/index.html')" style="width: 100%; justify-content: center;">
+                        <span class="material-symbols-outlined">add_circle</span>
+                        Explorar Mais Cursos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Coluna lateral -->
+            <div>
+                <!-- Conquistas -->
+                <div class="card" style="margin-bottom: 2rem;">
+                    <h3 class="card-title">
+                        <span class="material-symbols-outlined">emoji_events</span>
+                        Conquistas
+                    </h3>
+
+                    <div class="achievement-item">
+                        <div class="achievement-badge badge-gold">🏆</div>
+                        <div class="achievement-info">
+                            <h4>Mestre Python</h4>
+                            <p>Completou 10 cursos de Python</p>
+                        </div>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-badge badge-silver">⭐</div>
+                        <div class="achievement-info">
+                            <h4>Dedicado</h4>
+                            <p>7 dias seguidos estudando</p>
+                        </div>
+                    </div>
+
+                    <div class="achievement-item">
+                        <div class="achievement-badge badge-bronze">🎯</div>
+                        <div class="achievement-info">
+                            <h4>Iniciante</h4>
+                            <p>Primeiro curso concluído</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Atividades Recentes -->
+                <div class="card">
+                    <h3 class="card-title">
+                        <span class="material-symbols-outlined">history</span>
+                        Atividade Recente
+                    </h3>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-title">Completou "Funções em Python"</div>
+                            <div class="activity-time">Há 2 horas</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <span class="material-symbols-outlined">star</span>
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-title">Conquistou "Dedicado"</div>
+                            <div class="activity-time">Há 5 horas</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-title">Iniciou "React Hooks"</div>
+                            <div class="activity-time">Ontem</div>
+                        </div>
+                    </div>
+
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <span class="material-symbols-outlined">workspace_premium</span>
+                        </div>
+                        <div class="activity-details">
+                            <div class="activity-title">Certificado de Java emitido</div>
+                            <div class="activity-time">Há 2 dias</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

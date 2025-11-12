@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="../../captcha.js"></script>
+
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="flex flex-col min-h-screen">
+    <div class="grid grid-cols-1 xl:grid-cols-2 w-full h-full md:min-h-[600px] flex-1">
+
+      <div class="flex flex-col bg-[#6C63FF] items-center justify-center text-white p-6">
+        <div class="flex justify-center gap-2">
+          <div class="flex gap-2 invisible md:visible items-center">
+            <h1 class="text-2xl">Cursos Fácil</h1>
+            <img class="" src="./imgs/logo.svg" />
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h1 class="font-black text-5xl text-center md:m-5">Cadastrar</h1>
+          <form class="flex flex-col gap-2" id="cadastroForm">
+            <p class="font-medium">
+              Para ter o melhor aprendizado da sua vida
+            </p>
+            <input class="border bg-white rounded-md p-2 text-black" placeholder="E-mail" type="email" id="email" required />
+            <input class="border bg-white rounded-md p-2 text-black" placeholder="Senha" type="password" id="password" required />
+            <input class="border bg-white rounded-md p-2 text-black" placeholder="Confirmar Senha" type="password" id="confirmPassword" required />
+            
+            <!-- CAPTCHA -->
+            <div class="flex flex-col gap-2 bg-white p-3 rounded-md">
+              <label class="text-black font-medium text-sm">Digite o código abaixo:</label>
+              <div class="flex gap-2 items-center">
+                <canvas id="captchaCanvas" width="200" height="60" class="border border-gray-300 rounded"></canvas>
+                <button type="button" onclick="captchaCadastro.generate()" class="bg-blue-500 hover:bg-blue-600 text-white px-3 py-2 rounded text-sm" title="Gerar novo código">🔄</button>
+              </div>
+              <input id="captchaInput" type="text" class="border border-gray-300 rounded-md p-2 text-black" placeholder="Digite o código" required />
+            </div>
+            
+            <button type="submit"
+              class="flex bg-green-600 hover:bg-green-700 text-white font-bold rounded-full p-2 justify-center cursor-pointer">Confirmar</button>
+            <a class="flex bg-gray-600 text-white font-bold rounded-full p-2 justify-center cursor-pointer shadow-md hover:bg-gray-700 transition duration-300"
+              onclick="carregar('./pages/inicio/index.html')">Voltar</a>
+          </form>
+
+          <a onclick="carregar('./pages/login/index.html')" class="cursor-pointer"><strong>Já</strong> tem uma conta?
+            clique
+            aqui!</a>
+
+        </div>
+      </div>
+      <div class="flex-col p-10 gap-5 items-center justify-center hidden lg:flex">
+        <div class="text-gray-500">
+          <h3 class="text-xl font-medium">Olá, vc é novo aqui?</h3>
+          <h1 class="w-full text-4xl font-bold uppercase">Bem-Vindo</h1>
+        </div>
+        <img class="w-[60%] mt-10" src="./imgs/imagemCadastro.svg" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let captchaCadastro;
+    
+    // Inicializa o CAPTCHA quando a página carregar
+    window.addEventListener('DOMContentLoaded', function() {
+      captchaCadastro = initCaptcha('captchaCanvas', 'captchaInput');
+    });
+
+    // Validação do formulário
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('cadastroForm');
+      
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const captchaInput = document.getElementById('captchaInput').value;
+        
+        // Verifica se as senhas coincidem
+        if (password !== confirmPassword) {
+          alert('As senhas não coincidem!');
+          return;
+        }
+        
+        // Valida o CAPTCHA
+        if (captchaCadastro.validate(captchaInput)) {
+          // CAPTCHA correto, pode prosseguir
+          alert('Cadastro realizado com sucesso!');
+          window.location.href = '/pages/login/';
+        } else {
+          // CAPTCHA incorreto
+          alert('Código CAPTCHA incorreto! Tente novamente.');
+          captchaCadastro.generate();
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

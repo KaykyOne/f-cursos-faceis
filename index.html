@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="./index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="flex flex-col w-screen h-screen text-[tex] overflow-x-hidden" id="tudo">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-center bg-white/50 backdrop-blur-md text-gray-700 w-full px-4 py-2 fixed pl-[10%] pr-[10%] z-50"
+            id="navbar">
+            <a class="flex items-center gap-2 justify-center md:justify-start" href="./index.html">
+                <div class="text-2xl font-bold">Cursos Fácil</div>
+                <img src="./imgs/logo.svg" alt="Logo" class="h-8 w-auto invert" />
+            </a>
+            <div class="flex justify-center gap-6 text-lg">
+                <a class="cursor-pointer hover:scale-105 hover:font-bold transition-all duration-300"
+                    onclick="carregar('./pages/inicio/index.html')">Home</a>
+                <a class="cursor-pointer hover:scale-105 hover:font-bold transition-all duration-300"
+                    onclick="carregar('./pages/cursos/index.html')">Cursos</a>
+                <a class="cursor-pointer hover:scale-105 hover:font-bold transition-all duration-300"
+                    onclick="carregar('./pages/contato/index.html')">Contato</a>
+                <a class="cursor-pointer hover:scale-105 hover:font-bold transition-all duration-300"
+                    onclick="carregar('./pages/noticias/index.html')">Notícias</a>
+                <a class="cursor-pointer hover:scale-105 hover:font-bold transition-all duration-300"
+                    onclick="carregar('./pages/faq/index.html')">Dúvidas</a>
+            </div>
+
+            <div class="flex flex-col lg:flex-row gap-2 justify-center lg:justify-end ">
+                <div class="flex justify-center md:justify-end gap-2">
+                    <a onclick="carregar('./pages/login/index.html')"
+                        class="bg-green-900 transition duration-300 text-white font-bold rounded-full cursor-pointer flex items-center gap-2 overflow-hidden hover:scale-105">
+                        <p class="p-2 pl-5 pr-5">Login</p>
+
+                        <span
+                            class="material-symbols-outlined bg-green-950 h-full flex items-center justify-center p-2 pr-3">
+                            login
+                        </span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-2 justify-center">
+                    <div class="bg-black p-2 text-white rounded-full w-[40px] h-[40px] cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-lg"
+                        id="buttonTema">
+                        <span class="material-symbols-outlined">
+                            routine
+                        </span>
+                    </div>
+                    <div class="bg-black p-2 text-white rounded-full w-[40px] h-[40px] cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-lg"
+                        id="buttonFontUpper">
+                        <span class="material-symbols-outlined">
+                            uppercase
+                        </span>
+                    </div>
+                    <div class="bg-black p-2 text-white rounded-full w-[40px] h-[40px] cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-lg"
+                        id="buttonFontUp">
+                        <span class="material-symbols-outlined">
+                            match_case
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="meu-componente" class="mt-10 pt-[150px] md:pt-0"></div>
+
+        <div class="flex flex-col items-center bg-black text-white w-full py-8 px-4">
+            <div class="font-medium text-sm text-gray-400 mb-4">
+                © 2025 Cursos Fácil. Todos os direitos reservados.
+            </div>
+
+            <div class="flex justify-center gap-6 mb-4">
+                <a href="#" class="hover:scale-110 transition-transform duration-200">
+                    <img src="./imgs/instagram.png" class="w-6 h-6" />
+                </a>
+                <a href="#" class="hover:scale-110 transition-transform duration-200">
+                    <img src="./imgs/facebook.png" class="w-6 h-6" />
+                </a>
+                <a href="#" class="hover:scale-110 transition-transform duration-200">
+                    <img src="./imgs/X.png" class="w-6 h-6" />
+                </a>
+                <a href="#" class="hover:scale-110 transition-transform duration-200">
+                    <img src="./imgs/discord.png" class="w-6 h-6" />
+                </a>
+            </div>
+
+            <div class="flex items-center gap-2 cursor-pointer hover:text-green-400 transition-colors duration-200"
+                id="buttonToUp">
+                <a href="#" class="text-sm font-medium">Voltar ao Topo</a>
+                <img src="./imgs/upToStart.svg" class="w-4 h-4" />
+            </div>
+        </div>
+
+
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-button"></div>
+            </div>
+        </div>
+        <div id="modal" class="fixed w-screen h-screen bg-black/70 flex items-center justify-center">
+            <div
+                class="bg-white flex flex-col w-[300px] h-[400px] rounded-md items-center justify-start overflow-hidden">
+                <div class="w-full bg-linear-to-bl from-red-500 to-red-800">
+                    <img src="./imgs/img-mulher.png"/>
+                </div>
+                <div class="flex flex-col p-4 w-full">
+                    <h1 class="text-lg font-semibold text-start">Novos Cursos Adicionados</h1>
+                    <ul class="w-full">
+                        <li>- Curo de Java</li>
+                        <li>- Curo de Python</li>
+                        <li>- Curo de React</li>
+                    </ul>
+                </div>
+                <button id="bgFecharModal" class="cursor-pointer w-[90%] text-red-700 rounded-full p-3">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+
+</html>

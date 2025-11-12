@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class="flex flex-col min-h-screen">
+        <div class="flex flex-col gap-2 w-full p-5">
+            <h1 class="text-start text-3xl font-bold">Cursos:</h1>
+            <!-- Search Pattern com ícone de busca -->
+            <div class="relative max-w-[400px]">
+                <input id="searchInput" 
+                       class="rounded-full border-2 border-gray-300 p-3 pl-12 w-full 
+                              focus:border-[#6C63FF] focus:outline-none transition-all duration-300
+                              hover:border-gray-400" 
+                       placeholder="Pesquisar cursos..." 
+                       type="search"
+                       aria-label="Buscar cursos" />
+                <span class="material-symbols-outlined absolute left-3 top-3 text-gray-400">
+                    search
+                </span>
+            </div>
+            <!-- Filtros rápidos -->
+            <div class="flex gap-2 flex-wrap mt-2">
+                <button class="px-4 py-2 rounded-full border-2 border-gray-300 
+                              hover:bg-[#6C63FF] hover:text-white hover:border-[#6C63FF]
+                              transition-all duration-300 text-sm font-medium"
+                        onclick="filtrarCurso('todos')">
+                    Todos
+                </button>
+                <button class="px-4 py-2 rounded-full border-2 border-gray-300 
+                              hover:bg-[#6C63FF] hover:text-white hover:border-[#6C63FF]
+                              transition-all duration-300 text-sm font-medium"
+                        onclick="filtrarCurso('iniciante')">
+                    Iniciante
+                </button>
+                <button class="px-4 py-2 rounded-full border-2 border-gray-300 
+                              hover:bg-[#6C63FF] hover:text-white hover:border-[#6C63FF]
+                              transition-all duration-300 text-sm font-medium"
+                        onclick="filtrarCurso('avancado')">
+                    Avançado
+                </button>
+            </div>
+        </div>
+        <div class="flex flex-wrap p-5 min-h-screen gap-4" id="cursosContainer">
+
+            <div
+                class="flex flex-col bg-white rounded-2xl shadow-md overflow-hidden max-h-[350px] justify-center items-center hover:shadow-lg transition duration-300 hover:-translate-y-1">
+                <img src="./imgs/python.png" alt="Curso" class=" h-30 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-2">Python</h2>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Aprenda a programar do zero, com projetos práticos e acompanhamento.
+                    </p>
+                    <img class="group-3 mb-3 mt-3" src="./imgs/5estrelas.svg" />
+                    <a onclick="carregar('./pages/curso-python/index.html')"
+                        class="inline-block bg-none border text-black px-4 py-2 rounded-xl cursor-pointer hover:bg-black hover:text-white transition duration-300  ">
+                        Ver Curso
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col bg-white rounded-2xl shadow-md overflow-hidden max-h-[350px] justify-center items-center hover:shadow-lg transition duration-300 hover:-translate-y-1">
+                <img src="./imgs/java.png" alt="Curso" class=" h-30 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-2">Java</h2>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Aprenda a programar do zero, com projetos práticos e acompanhamento.
+                    </p>
+                    <img class="group-3 mb-3 mt-3" src="./imgs/5estrelas.svg" />
+                    <a onclick="carregar('./pages/curso-java/index.html')"
+                        class="inline-block bg-none border text-black px-4 py-2 rounded-xl cursor-pointer hover:bg-black hover:text-white transition duration-300  ">
+                        Ver Curso
+                    </a>
+                </div>
+            </div>
+
+            <div
+                class="flex flex-col bg-white rounded-2xl shadow-md overflow-hidden max-h-[350px] justify-center items-center hover:shadow-lg transition duration-300 hover:-translate-y-1">
+                <img src="./imgs/react.png" alt="Curso" class=" h-30 object-cover">
+                <div class="p-4">
+                    <h2 class="text-xl font-semibold mb-2">React</h2>
+                    <p class="text-gray-600 text-sm mb-4">
+                        Aprenda a programar do zero, com projetos práticos e acompanhamento.
+                    </p>
+                    <img class="group-3 mb-3 mt-3" src="./imgs/5estrelas.svg" />
+                    <a onclick="carregar('./pages/curso-react/index.html')"
+                        class="inline-block bg-none border text-black px-4 py-2 rounded-xl cursor-pointer hover:bg-black hover:text-white transition duration-300  ">
+                        Ver Curso
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

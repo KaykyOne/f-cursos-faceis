@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+        <div class="bg-green-900 flex-col p-10 gap-5 items-center justify-center hidden lg:flex">
+            <img class="w-[80%] mt-10" src="./imgs/imagemEnviar.svg" />
+        </div>
+        <div class="bg-white w-full px-5 pt-5 pb-5 py-10 flex flex-col items-center gap-5 h-screen justify-center">
+            <h2 class="text-3xl font-bold text-[#252525] text-start w-full max-w-[500px]">Entre em Contato</h2>
+            <form class="flex flex-col gap-4 w-full max-w-[500px]">
+                <input type="text" placeholder="Seu nome"
+                    class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-green-600" />
+                <input type="email" placeholder="Seu e-mail"
+                    class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-green-600" />
+                <textarea rows="4" placeholder="Sua mensagem"
+                    class="border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-green-600"></textarea>
+                <div class="bg-green-900 text-stone-100 flex gap-2 pl-4  rounded-full transition-all duration-300 mt-5 group cursor-pointer hover:scale-105 justify-between"
+                    onclick="carregar('./pages/cadastrar/index.html')">
+                    <p class="p-3 pr-7 text-2xl text-center items-center flex font-semibold ">
+                        Enivar
+                    </p>
+
+                    <div class="bg-green-950 flex pr-4 rounded-r-full p-2 items-center justify-center w-[70px]">
+                        <span
+                            class="material-symbols-outlined rotate-90 group-hover:rotate-0 transition-all duration-300  ">
+                            send
+                        </span>
+                    </div>
+                </div>
+            </form>
+
+            <div class="flex flex-col gap-1 text-center text-[#555]">
+                <div><strong>Email:</strong> contato@cursosfacil.com</div>
+                <div><strong>Telefone:</strong> (11) 99999-9999</div>
+                <div><strong>Endereço:</strong> Rua dos Programadores, 123 - São Paulo, SP</div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+</html>

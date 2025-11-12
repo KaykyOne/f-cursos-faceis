@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./vars.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="flex flex-col">
+    <div
+      class="grid grid-cols-1 lg:grid-cols-2 p-4 w-full lg:w-[95%] lg:min-h-[600px] align-middle lg:bg-[url('./imgs/bg_inicio.png')] bg-no-repeat bg-cover sm:mt-5 md:shadow-lg rounded-2xl hover:-translate-y-1 transition-all duration-300">
+
+      <div class="flex flex-col ml-[10%] items-start text-start col-span-1 p-4 gap-3 align-middle justify-center">
+        <div class="text-6xl md:text-8xl font-bold">Últimas Noticias!</div>
+        <div class="md:text-2xl">Veja Agora Aqui mesmo!</div>
+      </div>
+
+      <div class="flex col-span-1 align-middle justify-center items-center mt-10 md:mt-0">
+        <img src="./imgs/imagemNoticias.png" class="" />
+
+      </div>
+
+    </div>
+
+    <div class="pl-10 pr-10 w-full mt-10">
+      <div class="bg-black w-full items-center flex justify-center gap-2 p-2 text-white rounded-full">
+        <div class="cursos-mais-pesquisados ml-3 font-bold">Noticias mais Pesquisadas:</div>
+      </div>
+    </div>
+
+    <div class="w-full p-5 gap-6">
+
+      <div class="flex flex-col sm:flex-row w-full  p-5 gap-2 items-center shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <img class="h-full rounded-md" src="./imgs/hacker.png" />
+        <div class="flex flex-col gap-2">
+          <h1 class="font-bold">Ataque hacker</h1>
+          <div class="font-light">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et sem
+            sem. Vestibulum fringilla, urna a posuere blandit, odio augue pharetra
+            ante, eu semper tortor est sit amet tellus. Ut porttitor massa vitae
+            ante convallis molestie. Proin sit amet urna sit amet purus interdum
+            molestie.
+          </div>
+          <img class="group-5 w-[100px]" src="./imgs/5estrelas.svg" />
+          <a class="border-1 max-w-[150px] rounded-md font-medium  text-center cursor-pointer" onclick="carregar('./pages/noticia-hacker/index.html')">
+            Saiba Mais!
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row w-full p-5 gap-2 items-center shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <img class="h-full rounded-md" src="./imgs/geladera.png" />
+        <div class="flex flex-col gap-2">
+          <h1 class="font-bold">Uso de Python em Sistemas de Geladeiras</h1>
+          <div class="font-light">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et sem
+            sem. Vestibulum fringilla, urna a posuere blandit, odio augue pharetra
+            ante, eu semper tortor est sit amet tellus. Ut porttitor massa vitae
+            ante convallis molestie. Proin sit amet urna sit amet purus interdum
+            molestie.
+          </div>
+          <img class="group-5 w-[100px]" src="./imgs/5estrelas.svg" />
+          <a class="border-1 max-w-[150px] rounded-md font-medium  text-center cursor-pointer" onclick="carregar('./pages/noticia-python/index.html')">
+            Saiba Mais!
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row w-full p-5 gap-2 items-center shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+        <img class="h-full rounded-md" src="./imgs/cara.png" />
+        <div class="flex flex-col gap-2">
+          <h1 class="font-bold">Nova Linguagem Está Fazendo Sucesso</h1>
+          <div class="font-light">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et sem
+            sem. Vestibulum fringilla, urna a posuere blandit, odio augue pharetra
+            ante, eu semper tortor est sit amet tellus. Ut porttitor massa vitae
+            ante convallis molestie. Proin sit amet urna sit amet purus interdum
+            molestie.
+          </div>
+          <img class="group-5 w-[100px]" src="./imgs/5estrelas.svg" />
+          <a class="border-1 max-w-[150px] rounded-md font-medium  text-center cursor-pointer" onclick="carregar('./pages/noticia-nova-linguagem/index.html')">
+            Saiba Mais!
+          </a>
+        </div>
+      </div>
+
+
+    </div>
+
+</body>
+
+</html>
